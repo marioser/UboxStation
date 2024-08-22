@@ -1,23 +1,241 @@
 [
     {
-        "id": "60ec397291545396",
+        "id": "3b186e5e67d66947",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Read PAC",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "3b186e5e67d66947",
+        "id": "0efdf67341d4e0cb",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Influx DB write",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "d9995de5c328ea80",
+        "type": "subflow",
+        "name": "PAC3100",
+        "info": "",
+        "category": "Meters",
+        "in": [
+            {
+                "x": 20,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "1d40d1e73516d9e5"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 980,
+                "y": 540,
+                "wires": [
+                    {
+                        "id": "4acf56f21faf5745",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 250,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "04924e8f7103c56a",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "FIELDS",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-area-chart",
+                    "label": {
+                        "en-US": "Fields"
+                    },
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "en-US": "Voltages"
+                                },
+                                "v": "voltages"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Currents"
+                                },
+                                "v": "currents"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Energy"
+                                },
+                                "v": "energy"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Aparent Power"
+                                },
+                                "v": "aparent_power"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Active Power"
+                                },
+                                "v": "active_power"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Reactive Power"
+                                },
+                                "v": "reactive_power"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Maximun"
+                                },
+                                "v": "maximun"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "MEASUREMENT",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-user-circle-o",
+                    "label": {
+                        "en-US": "Name Measurement"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "LOCATION",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-globe",
+                    "label": {
+                        "en-US": "Location"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "OPERATION",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-industry",
+                    "label": {
+                        "en-US": "Operation"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {
+            "module": "PAC3100",
+            "version": "0.1.0",
+            "author": "S&G Soluciones de Ingenieria",
+            "desc": "Modulo para preparacion de mediciones por medio de PAC3100 mediante Modbus TCPIP",
+            "keywords": "SIEMENS, PAC",
+            "license": "MIT"
+        },
+        "color": "#3FADB5",
+        "inputLabels": [
+            "Modbus Data"
+        ],
+        "outputLabels": [
+            "Data to Influx Format",
+            "Errors"
+        ],
+        "icon": "font-awesome/fa-tachometer",
+        "status": {
+            "x": 220,
+            "y": 480,
+            "wires": [
+                {
+                    "id": "b055f5941e63fa82",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "107720c2d51142a8",
+        "type": "group",
+        "z": "d9995de5c328ea80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "78b9dd998a8c4015",
+            "39b3da77f33f92f7",
+            "e6dc5cc01d0a16eb",
+            "a86d7d2b51f0994b",
+            "2cb11ccf52a41f1d",
+            "24fedbd0b8a49480",
+            "ee40d444af64e09f",
+            "97394628d9af5a6e",
+            "e06f8ba3b3d289ab",
+            "b1fbd9e111aa2001",
+            "dcd66e61f4297ec3",
+            "5207cca9982dee05",
+            "8e693a9a2be3d805",
+            "55cbd0038b829710",
+            "a98aa59aae751b84",
+            "1d40d1e73516d9e5"
+        ],
+        "x": 74,
+        "y": 39,
+        "w": 632,
+        "h": 322
     },
     {
         "id": "3d6654dd538c3a69",
         "type": "modbus-client",
+        "z": "3b186e5e67d66947",
         "name": "PAC3100",
         "clienttype": "tcp",
         "bufferCommands": true,
@@ -46,41 +264,26 @@
         "showLogs": true
     },
     {
-        "id": "4dd6f690b36fc4c1",
-        "type": "modbus-read",
-        "z": "3b186e5e67d66947",
-        "name": "PC3100",
-        "topic": "",
-        "showStatusActivities": true,
-        "logIOActivities": false,
-        "showErrors": true,
-        "showWarnings": true,
-        "unitid": "",
-        "dataType": "HoldingRegister",
-        "adr": "1",
-        "quantity": "80",
-        "rate": "5",
-        "rateUnit": "s",
-        "delayOnStart": false,
-        "startDelayTime": "",
-        "server": "3d6654dd538c3a69",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "emptyMsgOnFail": false,
-        "x": 90,
-        "y": 60,
-        "wires": [
-            [
-                "e8c488ef9a0f634a"
-            ],
-            []
-        ]
+        "id": "297134d2189fba48",
+        "type": "influxdb",
+        "z": "0efdf67341d4e0cb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Conexion Influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": "10",
+        "rejectUnauthorized": false
     },
     {
-        "id": "deac7ae299bce7ec",
+        "id": "78b9dd998a8c4015",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Voltages",
         "data": "payload",
         "dataType": "msg",
@@ -156,35 +359,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 540,
-        "y": 60,
+        "x": 440,
+        "y": 80,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "97394628d9af5a6e"
             ]
         ]
     },
     {
-        "id": "a88a6f6739d762bf",
-        "type": "debug",
-        "z": "3b186e5e67d66947",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "3a2db351431fdd0f",
+        "id": "39b3da77f33f92f7",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Currents",
         "data": "payload",
         "dataType": "msg",
@@ -233,18 +420,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 540,
-        "y": 100,
+        "x": 440,
+        "y": 120,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "e06f8ba3b3d289ab"
             ]
         ]
     },
     {
-        "id": "1e810ff1e3538f44",
+        "id": "e6dc5cc01d0a16eb",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Aparent Powers",
         "data": "payload",
         "dataType": "msg",
@@ -293,18 +481,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 560,
-        "y": 140,
+        "x": 460,
+        "y": 160,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "b1fbd9e111aa2001"
             ]
         ]
     },
     {
-        "id": "beea93c0c4fadb39",
+        "id": "a86d7d2b51f0994b",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Active Powers",
         "data": "payload",
         "dataType": "msg",
@@ -353,18 +542,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 560,
-        "y": 180,
+        "x": 460,
+        "y": 200,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "dcd66e61f4297ec3"
             ]
         ]
     },
     {
-        "id": "87e166e7c92f55d0",
+        "id": "2cb11ccf52a41f1d",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Reactive Powers",
         "data": "payload",
         "dataType": "msg",
@@ -413,18 +603,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 570,
-        "y": 220,
+        "x": 470,
+        "y": 240,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "5207cca9982dee05"
             ]
         ]
     },
     {
-        "id": "cb30f0c43d1f8502",
+        "id": "24fedbd0b8a49480",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Energy",
         "data": "payload",
         "dataType": "msg",
@@ -500,18 +691,19 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 530,
-        "y": 260,
+        "x": 430,
+        "y": 280,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "8e693a9a2be3d805"
             ]
         ]
     },
     {
-        "id": "c2607051ef71932d",
+        "id": "ee40d444af64e09f",
         "type": "buffer-parser",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "Maximum",
         "data": "payload",
         "dataType": "msg",
@@ -641,19 +833,282 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 540,
-        "y": 300,
+        "x": 440,
+        "y": 320,
         "wires": [
             [
-                "65e5dc46c34cbac9"
+                "55cbd0038b829710"
             ]
         ]
     },
     {
-        "id": "41e39cd6277d6849",
+        "id": "97394628d9af5a6e",
         "type": "switch",
-        "z": "3b186e5e67d66947",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
         "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "voltages",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "e7a1c46e3b678d69",
+        "type": "change",
+        "z": "d9995de5c328ea80",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "typeField",
+                "pt": "msg",
+                "to": "FIELDS",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 200,
+        "wires": [
+            [
+                "3ee5b135f86fa2a0"
+            ]
+        ]
+    },
+    {
+        "id": "e06f8ba3b3d289ab",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "currents",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 570,
+        "y": 120,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "b1fbd9e111aa2001",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "aparent_power",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 160,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "dcd66e61f4297ec3",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "active_power",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "5207cca9982dee05",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "reactive power",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "8e693a9a2be3d805",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "energy",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "55cbd0038b829710",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "maximun",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 570,
+        "y": 320,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "a98aa59aae751b84",
+        "type": "function",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "TS( )",
+        "func": "\nmsg.timestamp= new Date()\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "a86d7d2b51f0994b",
+                "e6dc5cc01d0a16eb",
+                "39b3da77f33f92f7",
+                "78b9dd998a8c4015",
+                "2cb11ccf52a41f1d",
+                "24fedbd0b8a49480",
+                "ee40d444af64e09f"
+            ]
+        ],
+        "icon": "node-red/timer.svg"
+    },
+    {
+        "id": "04924e8f7103c56a",
+        "type": "catch",
+        "z": "d9995de5c328ea80",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 80,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b055f5941e63fa82",
+        "type": "status",
+        "z": "d9995de5c328ea80",
+        "name": "",
+        "scope": null,
+        "x": 80,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d40d1e73516d9e5",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "chkError",
         "property": "error",
         "propertyType": "msg",
         "rules": [
@@ -664,18 +1119,113 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 350,
-        "y": 60,
+        "x": 160,
+        "y": 200,
         "wires": [
             [
-                "deac7ae299bce7ec",
-                "3a2db351431fdd0f",
-                "1e810ff1e3538f44",
-                "beea93c0c4fadb39",
-                "87e166e7c92f55d0",
-                "cb30f0c43d1f8502",
-                "c2607051ef71932d"
+                "a98aa59aae751b84"
             ]
+        ],
+        "icon": "font-awesome/fa-stop-circle-o"
+    },
+    {
+        "id": "3ee5b135f86fa2a0",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "name": "chkErrorMessage",
+        "property": "error.message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 260,
+        "wires": [
+            [
+                "09749d4ef25bc1ba"
+            ]
+        ],
+        "icon": "font-awesome/fa-stop-circle"
+    },
+    {
+        "id": "4acf56f21faf5745",
+        "type": "function",
+        "z": "d9995de5c328ea80",
+        "name": "Form Data",
+        "func": "const measurement = env.get(\"MEASUREMENT\")\nconst location = env.get(\"LOCATION\")\nconst operation = env.get(\"OPERATION\")\n\n\nmsg.payload = [\n    {\n        measurement: measurement,\n        fields: msg.payload,\n        tags: {\n            location: location,\n            operation: operation,\n            typeField: msg.typeField\n        },\n        timestamp: new Date(msg.timestamp)}\n];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "09749d4ef25bc1ba",
+        "type": "function",
+        "z": "d9995de5c328ea80",
+        "name": "dot",
+        "func": "node.status({ fill: \"green\", shape: \"dot\", text: msg.typeField });\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 340,
+        "wires": [
+            [
+                "4acf56f21faf5745"
+            ]
+        ]
+    },
+    {
+        "id": "4dd6f690b36fc4c1",
+        "type": "modbus-read",
+        "z": "3b186e5e67d66947",
+        "name": "PC3100",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "1",
+        "quantity": "80",
+        "rate": "3",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "3d6654dd538c3a69",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "ec6b80c896c85d7b",
+                "c68f60276ffac60c",
+                "e63be8f82b14fa47",
+                "00cfdc96672aae16",
+                "9709a6d237c3b6d9",
+                "a4096476e022b8a4",
+                "b33db6f7f4ba756d"
+            ],
+            []
         ]
     },
     {
@@ -685,13 +1235,7 @@
         "name": "",
         "scope": [
             "4dd6f690b36fc4c1",
-            "deac7ae299bce7ec",
-            "3a2db351431fdd0f",
-            "1e810ff1e3538f44",
-            "beea93c0c4fadb39",
-            "87e166e7c92f55d0",
-            "cb30f0c43d1f8502",
-            "c2607051ef71932d"
+            "ec6b80c896c85d7b"
         ],
         "uncaught": false,
         "x": 70,
@@ -720,38 +1264,334 @@
         "wires": []
     },
     {
-        "id": "65e5dc46c34cbac9",
-        "type": "switch",
+        "id": "ec6b80c896c85d7b",
+        "type": "subflow:d9995de5c328ea80",
         "z": "3b186e5e67d66947",
-        "name": "",
-        "property": "error.message",
-        "propertyType": "msg",
-        "rules": [
+        "name": "PAC3100",
+        "env": [
             {
-                "t": "null"
+                "name": "FIELDS",
+                "value": "voltages",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
             }
         ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 750,
+        "x": 320,
         "y": 60,
         "wires": [
             [
-                "a88a6f6739d762bf"
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9cf91e83c600ed07",
+        "type": "link out",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "mode": "link",
+        "links": [
+            "b30ab5bc614dc52a"
+        ],
+        "x": 495,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c68f60276ffac60c",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "currents",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e63be8f82b14fa47",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "energy",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "00cfdc96672aae16",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "aparent_power",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9709a6d237c3b6d9",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "active_power",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a4096476e022b8a4",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "reactive_power",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b33db6f7f4ba756d",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "maximun",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "06cb979c645722f3",
+        "type": "influxdb batch",
+        "z": "0efdf67341d4e0cb",
+        "influxdb": "297134d2189fba48",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Ultracem Influx",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "ultracem",
+        "bucket": "PAC",
+        "x": 620,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a67f462e1084ce13",
+        "type": "catch",
+        "z": "0efdf67341d4e0cb",
+        "name": "",
+        "scope": [
+            "06cb979c645722f3"
+        ],
+        "uncaught": false,
+        "x": 90,
+        "y": 780,
+        "wires": [
+            [
+                "e6ad337b578ed828"
             ]
         ]
     },
     {
-        "id": "e8c488ef9a0f634a",
-        "type": "timestamp",
-        "z": "3b186e5e67d66947",
-        "name": "TS",
+        "id": "e6ad337b578ed828",
+        "type": "debug",
+        "z": "0efdf67341d4e0cb",
+        "name": "Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
         "x": 230,
-        "y": 60,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "b30ab5bc614dc52a",
+        "type": "link in",
+        "z": "0efdf67341d4e0cb",
+        "name": "to Write DB Influx",
+        "links": [
+            "9cf91e83c600ed07"
+        ],
+        "x": 285,
+        "y": 100,
         "wires": [
             [
-                "41e39cd6277d6849"
+                "06cb979c645722f3"
             ]
         ]
     }
