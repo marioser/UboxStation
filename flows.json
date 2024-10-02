@@ -34,8 +34,8 @@
         ],
         "out": [
             {
-                "x": 980,
-                "y": 540,
+                "x": 920,
+                "y": 420,
                 "wires": [
                     {
                         "id": "4acf56f21faf5745",
@@ -44,8 +44,8 @@
                 ]
             },
             {
-                "x": 250,
-                "y": 440,
+                "x": 270,
+                "y": 580,
                 "wires": [
                     {
                         "id": "04924e8f7103c56a",
@@ -81,9 +81,9 @@
                             },
                             {
                                 "l": {
-                                    "en-US": "Energy"
+                                    "en-US": "Totals"
                                 },
-                                "v": "energy"
+                                "v": "total"
                             },
                             {
                                 "l": {
@@ -108,6 +108,12 @@
                                     "en-US": "Maximun"
                                 },
                                 "v": "maximun"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Energy"
+                                },
+                                "v": "energy"
                             }
                         ]
                     }
@@ -182,12 +188,13 @@
         ],
         "outputLabels": [
             "Data to Influx Format",
-            "Errors"
+            "Errors",
+            ""
         ],
         "icon": "font-awesome/fa-tachometer",
         "status": {
-            "x": 220,
-            "y": 480,
+            "x": 240,
+            "y": 620,
             "wires": [
                 {
                     "id": "b055f5941e63fa82",
@@ -225,12 +232,22 @@
             "8e693a9a2be3d805",
             "55cbd0038b829710",
             "a98aa59aae751b84",
-            "1d40d1e73516d9e5"
+            "1d40d1e73516d9e5",
+            "39174a7ed1b8ed46",
+            "625ac8f2f8d5be7d",
+            "3106c86f47a9f2df",
+            "25bc9d6dcdc6405c",
+            "e822297aa9edf15f",
+            "3d52847c18ed229b",
+            "d61ea654f7acf367",
+            "48fb058b9ccc802c",
+            "cf7d64a071bc98b2",
+            "8474ec6dfe7ff9bf"
         ],
-        "x": 74,
+        "x": 54,
         "y": 39,
-        "w": 632,
-        "h": 322
+        "w": 652,
+        "h": 362
     },
     {
         "id": "3d6654dd538c3a69",
@@ -253,11 +270,11 @@
         "serialParity": "none",
         "serialConnectionDelay": "100",
         "serialAsciiResponseStartDelimiter": "0x3A",
-        "unit_id": "1",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
         "reconnectOnTimeout": true,
-        "reconnectTimeout": "2000",
+        "reconnectTimeout": 2000,
         "parallelUnitIdsAllowed": true,
         "showErrors": false,
         "showWarnings": true,
@@ -616,7 +633,7 @@
         "type": "buffer-parser",
         "z": "d9995de5c328ea80",
         "g": "107720c2d51142a8",
-        "name": "Energy",
+        "name": "Total",
         "data": "payload",
         "dataType": "msg",
         "specification": "spec",
@@ -983,7 +1000,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "reactive power",
+                "v": "reactive_power",
                 "vt": "str"
             }
         ],
@@ -1009,7 +1026,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "energy",
+                "v": "total",
                 "vt": "str"
             }
         ],
@@ -1063,17 +1080,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
+        "x": 170,
         "y": 200,
         "wires": [
             [
-                "a86d7d2b51f0994b",
-                "e6dc5cc01d0a16eb",
-                "39b3da77f33f92f7",
-                "78b9dd998a8c4015",
-                "2cb11ccf52a41f1d",
-                "24fedbd0b8a49480",
-                "ee40d444af64e09f"
+                "39174a7ed1b8ed46",
+                "625ac8f2f8d5be7d",
+                "3106c86f47a9f2df",
+                "25bc9d6dcdc6405c",
+                "e822297aa9edf15f",
+                "3d52847c18ed229b",
+                "d61ea654f7acf367",
+                "48fb058b9ccc802c"
             ]
         ],
         "icon": "node-red/timer.svg"
@@ -1085,8 +1103,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 80,
-        "y": 440,
+        "x": 100,
+        "y": 580,
         "wires": [
             []
         ]
@@ -1097,8 +1115,8 @@
         "z": "d9995de5c328ea80",
         "name": "",
         "scope": null,
-        "x": 80,
-        "y": 480,
+        "x": 100,
+        "y": 620,
         "wires": [
             []
         ]
@@ -1119,8 +1137,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 160,
-        "y": 200,
+        "x": 140,
+        "y": 240,
         "wires": [
             [
                 "a98aa59aae751b84"
@@ -1144,7 +1162,7 @@
         "repair": false,
         "outputs": 1,
         "x": 890,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "09749d4ef25bc1ba"
@@ -1164,8 +1182,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 950,
-        "y": 500,
+        "x": 890,
+        "y": 380,
         "wires": [
             []
         ]
@@ -1182,11 +1200,297 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
+        "x": 870,
         "y": 340,
         "wires": [
             [
                 "4acf56f21faf5745"
+            ]
+        ]
+    },
+    {
+        "id": "8474ec6dfe7ff9bf",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "property": "FIELDS",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "energy",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "e7a1c46e3b678d69"
+            ]
+        ]
+    },
+    {
+        "id": "cf7d64a071bc98b2",
+        "type": "buffer-parser",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "doublebe",
+                "name": "Active Energy",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "doublebe",
+                "name": "Reactive Energy",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "8474ec6dfe7ff9bf"
+            ]
+        ]
+    },
+    {
+        "id": "48fb058b9ccc802c",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "801",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "801",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "cf7d64a071bc98b2"
+            ]
+        ]
+    },
+    {
+        "id": "39174a7ed1b8ed46",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "78b9dd998a8c4015"
+            ]
+        ]
+    },
+    {
+        "id": "625ac8f2f8d5be7d",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "39b3da77f33f92f7"
+            ]
+        ]
+    },
+    {
+        "id": "3106c86f47a9f2df",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "e6dc5cc01d0a16eb"
+            ]
+        ]
+    },
+    {
+        "id": "25bc9d6dcdc6405c",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "a86d7d2b51f0994b"
+            ]
+        ]
+    },
+    {
+        "id": "e822297aa9edf15f",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "24fedbd0b8a49480"
+            ]
+        ]
+    },
+    {
+        "id": "3d52847c18ed229b",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "2cb11ccf52a41f1d"
+            ]
+        ]
+    },
+    {
+        "id": "d61ea654f7acf367",
+        "type": "switch",
+        "z": "d9995de5c328ea80",
+        "g": "107720c2d51142a8",
+        "name": "1",
+        "property": "input.payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "ee40d444af64e09f"
             ]
         ]
     },
@@ -1203,7 +1507,7 @@
         "unitid": "",
         "dataType": "HoldingRegister",
         "adr": "1",
-        "quantity": "80",
+        "quantity": "90",
         "rate": "3",
         "rateUnit": "s",
         "delayOnStart": false,
@@ -1235,11 +1539,18 @@
         "name": "",
         "scope": [
             "4dd6f690b36fc4c1",
-            "ec6b80c896c85d7b"
+            "ec6b80c896c85d7b",
+            "c68f60276ffac60c",
+            "e63be8f82b14fa47",
+            "00cfdc96672aae16",
+            "9709a6d237c3b6d9",
+            "a4096476e022b8a4",
+            "b33db6f7f4ba756d",
+            "59659d2953a9e306"
         ],
         "uncaught": false,
         "x": 70,
-        "y": 680,
+        "y": 800,
         "wires": [
             [
                 "022b89c1213e6cf3"
@@ -1260,7 +1571,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 210,
-        "y": 680,
+        "y": 800,
         "wires": []
     },
     {
@@ -1356,7 +1667,7 @@
         "env": [
             {
                 "name": "FIELDS",
-                "value": "energy",
+                "value": "total",
                 "type": "str"
             },
             {
@@ -1527,6 +1838,90 @@
             ],
             []
         ]
+    },
+    {
+        "id": "fd6e0dde1738dfa8",
+        "type": "modbus-read",
+        "z": "3b186e5e67d66947",
+        "name": "PC3100",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "801",
+        "quantity": "8",
+        "rate": "3",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "3d6654dd538c3a69",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "59659d2953a9e306"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "59659d2953a9e306",
+        "type": "subflow:d9995de5c328ea80",
+        "z": "3b186e5e67d66947",
+        "name": "PAC3100",
+        "env": [
+            {
+                "name": "FIELDS",
+                "value": "energy",
+                "type": "str"
+            },
+            {
+                "name": "MEASUREMENT",
+                "value": "PAC3100",
+                "type": "str"
+            },
+            {
+                "name": "LOCATION",
+                "value": "Ultracem",
+                "type": "str"
+            },
+            {
+                "name": "OPERATION",
+                "value": "Concreto",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 480,
+        "wires": [
+            [
+                "9cf91e83c600ed07"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "55ec5cf9c5d43b8d",
+        "type": "debug",
+        "z": "3b186e5e67d66947",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 460,
+        "wires": []
     },
     {
         "id": "06cb979c645722f3",
