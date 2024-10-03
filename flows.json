@@ -16,17 +16,9 @@
         "env": []
     },
     {
-        "id": "c8780a2e9f0edd9b",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "839b4ad968606fb0",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "PAC3120",
         "disabled": false,
         "info": "",
         "env": []
@@ -215,37 +207,27 @@
     {
         "id": "79c765de94608626",
         "type": "subflow",
-        "name": "Subflow 1",
+        "name": "Getter PAC3120 Double",
         "info": "",
         "category": "",
         "in": [
             {
-                "x": 60,
-                "y": 80,
+                "x": 120,
+                "y": 120,
                 "wires": [
                     {
-                        "id": "1d396496de231b1f"
+                        "id": "509aee568d7020d3"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 900,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "3968c49ca12a932c",
-                        "port": 0
-                    }
-                ]
-            },
-            {
                 "x": 940,
-                "y": 180,
+                "y": 120,
                 "wires": [
                     {
-                        "id": "583a93ad380e32fb",
+                        "id": "37c3927a5fba439a",
                         "port": 0
                     }
                 ]
@@ -275,7 +257,28 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#A6BBCF",
+        "inputLabels": [
+            "Modbus Flex Getter Double"
+        ],
+        "outputLabels": [
+            "Influxdb"
+        ],
+        "icon": "node-red/arrow-in.svg",
+        "status": {
+            "x": 320,
+            "y": 360,
+            "wires": [
+                {
+                    "id": "6c30611ca9d7d25f",
+                    "port": 0
+                },
+                {
+                    "id": "e87d6a3296ea8989",
+                    "port": 0
+                }
+            ]
+        }
     },
     {
         "id": "2f7d495596847cc6",
@@ -2559,133 +2562,7 @@
         ]
     },
     {
-        "id": "1d396496de231b1f",
-        "type": "template",
-        "z": "79c765de94608626",
-        "name": "JSON PAC3120",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "[\n    {\n        \"Offset\": 1,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L1-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 3,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L2-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 5,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L3-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 7,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L1-L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 9,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L2-L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 11,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension L3-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 13,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 15,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 17,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 19,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 21,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 23,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 25,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 27,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 29,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 31,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva L1 (Q1)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 33,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva L1 (Q1)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 35,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva L1 (Q1)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 37,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 39,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 41,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 43,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en tension L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 45,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en tension L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 47,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en tension L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 49,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en corriente L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 51,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en corriente L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 53,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R en corriente L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 55,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Frecuencia\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"Hz\",\n        \"Rango admitido\": \"45 … 65\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 57,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media UL-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 59,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media UL-L\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 61,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente media\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 63,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente total\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 65,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa total\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 67,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva total\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 69,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia total\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 71,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Desbalance de amplitudes de tension\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 73,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Desbalance de amplitudes de corriente\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 200\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 75,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L1-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 77,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L2-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 79,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L3-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 81,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L1-L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 83,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L2-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 85,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension maxima L3-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 87,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente maxima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 89,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente maxima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 91,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente maxima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 93,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente maxima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 95,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente maxima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 97,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente maxima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 99,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa maxima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 101,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa maxima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 103,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa maxima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 105,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva maxima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 107,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva maxima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 109,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva maxima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 111,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia maximo L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 113,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia maximo L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 115,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia maximo L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 117,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en tension L1-L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 119,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en tension L2-L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 121,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en tension L3-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 123,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en corriente L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 125,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en corriente L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 127,\n        \"Cantidad\": 2,\n        \"Nombre\": \"THD-R maxima en corriente L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"%\",\n        \"Rango admitido\": \"0 … 100\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 129,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Frecuencia maxima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"45 … 65\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 131,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media max. UL-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 133,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media max. UL-L\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 135,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente media max.\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 137,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente total maxima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 139,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa total maxima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 141,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva total maxima (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 143,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia total maximo\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 145,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L1-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 147,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L2-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 149,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L3-N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 151,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L1-L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 153,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L2-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 155,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension minima L3-L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 157,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente minima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 159,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente minima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 161,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente minima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 163,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente minima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 165,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente minima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 167,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente minima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 169,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa minima L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 171,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa minima L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 173,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa minima L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 175,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva minima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 177,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva minima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 179,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva minima L1 (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 181,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia minimo L1\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 183,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia minimo L2\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 185,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia minimo L3\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 187,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Frecuencia minima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"Hz\",\n        \"Rango admitido\": \"45 … 65\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 189,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media min. UL\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 191,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tension media min. UL-L\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"V\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 193,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente media min.\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 195,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia aparente total minima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"VA\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 197,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia activa total minima\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 199,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Potencia reactiva total minima (Qn)\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 201,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Factor de potencia total minimo\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 203,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Infracciones de limites\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Limit 0 Byte3 Bit1 Limit 1 Byte3 Bit2 Limit 2 Byte3 Bit3 Limit 3 Byte3 Bit4 Limit 4 Byte3 Bit5 Limit 5\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 205,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Diagnostico PMD y estado\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte0 global state Byte1 local state Byte2 global diag.\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 207,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de salidas digitales\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Output 0.0\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 209,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de entradas digitales\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Input 0.0\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 211,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tarifa activa\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 = Tarifa 1\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 213,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador de horas de funcionamiento\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"s\",\n        \"Rango admitido\": \"0 … 999999999\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 215,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador (configurable)\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"0 … 999999999\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 217,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador de cambios en parametros basicos\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 219,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador de cambios en todos los parametros\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 221,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador de cambios de limites\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 223,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 225,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente maxima N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 227,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Corriente minima N\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"A\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 231,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Contador de energia configurable\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"kWh,\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 233,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de salidas digitales, modulo 1\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Output 4.0\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 235,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de entradas digitales, modulo 1\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Input 4.0 Byte3 Bit1 Input 4.1 Byte3 Bit2 Input 4.2\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 237,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de salidas digitales, modulo 2\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Output 8.0\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 239,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Estado de entradas digitales, modulo 2\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"Byte3 Bit0 Input 8.0 Byte3 Bit1 Input 8.1 Byte3 Bit2 Input 8.2\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 501,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Media de potencia activa acumulada importada\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 503,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Media de potencia reactiva acumulada\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 505,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Media de potencia activa acumulada exportada\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 507,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Media de potencia reactiva acumulada exportada\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 509,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Valor max. de potencia activa en el periodo de demanda\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 511,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Valor min. de potencia activa en el periodo de demanda\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"W\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 513,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Valor max. de potencia reactiva en el periodo de demanda\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 515,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Valor min. de potencia reactiva en el periodo de demanda\",\n        \"Formato\": \"Float\",\n        \"Unidad\": \"var\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 517,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Duracion del periodo de demanda periodo actual\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"s\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 519,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Tiempo desde comienzo de periodo de demanda actual\",\n        \"Formato\": \"Unsigned long\",\n        \"Unidad\": \"s\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"R\"\n    },\n    {\n        \"Offset\": 799,\n        \"Cantidad\": 2,\n        \"Nombre\": \"Fecha/hora\",\n        \"Formato\": \"Unix_ts\",\n        \"Unidad\": \"–\",\n        \"Rango admitido\": \"–\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 801,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia activa total importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 805,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia activa total importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 809,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia activa total exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 813,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia activa total exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 817,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia reactiva total importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 821,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia reactiva total importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 825,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia reactiva total exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 829,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia reactiva total exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 833,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia aparente total, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 837,\n        \"Cantidad\": 4,\n        \"Nombre\": \"Energia aparente total, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 841,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia activa importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 845,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia activa importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 849,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia activa exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 853,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia activa exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 857,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia reactiva importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 861,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia reactiva importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 865,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia reactiva exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 869,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia reactiva exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 873,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia aparente, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 877,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L1 energia aparente, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 881,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia activa importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 885,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia activa importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 889,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia activa exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 893,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia activa exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 897,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia reactiva importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 901,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia reactiva importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 905,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia reactiva exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 909,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia reactiva exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 913,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia aparente, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 917,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L2 energia aparente, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 921,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia activa importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 925,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia activa importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 929,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia activa exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 933,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia activa exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 937,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia reactiva importada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 941,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia reactiva importada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"Wh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 945,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia reactiva exportada, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 949,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia reactiva exportada, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"varh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 953,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia aparente, tarifa 1\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    },\n    {\n        \"Offset\": 957,\n        \"Cantidad\": 4,\n        \"Nombre\": \"L3 energia aparente, tarifa 2\",\n        \"Formato\": \"Double\",\n        \"Unidad\": \"VAh\",\n        \"Rango admitido\": \"Overflow 1.0e+12\",\n        \"Acceso\": \"RW\"\n    }\n]",
-        "output": "str",
-        "x": 220,
-        "y": 80,
-        "wires": [
-            [
-                "3b588375761dd9e9"
-            ]
-        ]
-    },
-    {
-        "id": "3b588375761dd9e9",
-        "type": "json",
-        "z": "79c765de94608626",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 370,
-        "y": 80,
-        "wires": [
-            [
-                "0af1a62ec66d8d1f"
-            ]
-        ]
-    },
-    {
-        "id": "0af1a62ec66d8d1f",
-        "type": "split",
-        "z": "79c765de94608626",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 490,
-        "y": 80,
-        "wires": [
-            [
-                "e4334194797cf532"
-            ]
-        ]
-    },
-    {
-        "id": "e4334194797cf532",
-        "type": "switch",
-        "z": "79c765de94608626",
-        "name": "",
-        "property": "payload.Nombre",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "Factor de potencia L1",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 610,
-        "y": 80,
-        "wires": [
-            [
-                "3968c49ca12a932c"
-            ]
-        ]
-    },
-    {
-        "id": "3968c49ca12a932c",
-        "type": "function",
-        "z": "79c765de94608626",
-        "name": "function 2",
-        "func": "const payload = msg.payload\nmsg.payload={\n    fc:3,\n    unitid:\"2\",\n    address:payload.Offset,\n    quantity:payload.Cantidad\n}\nmsg.topic=payload.Nombre\nmsg.unidad=payload.Unidad\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 83,
-        "wires": [
-            [
-                "7d4120a980d3d5ee"
-            ]
-        ]
-    },
-    {
-        "id": "7d4120a980d3d5ee",
-        "type": "modbus-flex-getter",
-        "z": "79c765de94608626",
-        "name": "",
-        "showStatusActivities": false,
-        "showErrors": false,
-        "showWarnings": true,
-        "logIOActivities": false,
-        "server": "3d6654dd538c3a69",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "emptyMsgOnFail": false,
-        "keepMsgProperties": false,
-        "delayOnStart": false,
-        "startDelayTime": "",
-        "x": 740,
-        "y": 140,
-        "wires": [
-            [],
-            [
-                "583a93ad380e32fb"
-            ]
-        ]
-    },
-    {
-        "id": "583a93ad380e32fb",
+        "id": "509aee568d7020d3",
         "type": "buffer-parser",
         "z": "79c765de94608626",
         "name": "",
@@ -2695,8 +2572,8 @@
         "specificationType": "ui",
         "items": [
             {
-                "type": "floatbe",
-                "name": "item1",
+                "type": "doublebe",
+                "name": "item",
                 "offset": 0,
                 "length": 1,
                 "offsetbit": 0,
@@ -2718,8 +2595,97 @@
         "fanOutMultipleResult": false,
         "setTopic": true,
         "outputs": 1,
-        "x": 790,
-        "y": 180,
+        "x": 250,
+        "y": 120,
+        "wires": [
+            [
+                "1e0cbf648a466bd2"
+            ]
+        ]
+    },
+    {
+        "id": "1e0cbf648a466bd2",
+        "type": "switch",
+        "z": "79c765de94608626",
+        "name": "chkErrorMessage",
+        "property": "error.message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 120,
+        "wires": [
+            [
+                "6e8cabf8f06716aa"
+            ]
+        ],
+        "icon": "font-awesome/fa-stop-circle"
+    },
+    {
+        "id": "37c3927a5fba439a",
+        "type": "function",
+        "z": "79c765de94608626",
+        "name": "Form Data",
+        "func": "const topic = msg.topic;  \nconst payload = msg.payload;  \nmsg.payload = [  \n    {  \n        measurement: topic.measurement,  \n        fields: {[topic.fields]: payload.item},\n        tags: {  \n            location: topic.location,  \n            operation: topic.operation,  \n            typeField: topic.typeField  \n        },  \n        timestamp: new Date(topic.timestamp)  \n    }  \n];  \nreturn msg;  ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e8cabf8f06716aa",
+        "type": "function",
+        "z": "79c765de94608626",
+        "name": "dot",
+        "func": "const topic = msg.topic\nnode.status({ fill: \"green\", shape: \"dot\", text: topic.fields });\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 120,
+        "wires": [
+            [
+                "37c3927a5fba439a"
+            ]
+        ]
+    },
+    {
+        "id": "6c30611ca9d7d25f",
+        "type": "catch",
+        "z": "79c765de94608626",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 160,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e87d6a3296ea8989",
+        "type": "status",
+        "z": "79c765de94608626",
+        "name": "",
+        "scope": null,
+        "x": 160,
+        "y": 380,
         "wires": [
             []
         ]
@@ -3027,6 +2993,7 @@
         "id": "4dd6f690b36fc4c1",
         "type": "modbus-read",
         "z": "3b186e5e67d66947",
+        "d": true,
         "name": "PC3100",
         "topic": "",
         "showStatusActivities": true,
@@ -3662,86 +3629,6 @@
         ]
     },
     {
-        "id": "4ee66960f650d992",
-        "type": "influxdb out",
-        "z": "0efdf67341d4e0cb",
-        "influxdb": "297134d2189fba48",
-        "name": "",
-        "measurement": "",
-        "precision": "",
-        "retentionPolicy": "",
-        "database": "database",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "ultracem",
-        "bucket": "PAC3120",
-        "x": 670,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "6fc038de7e02e9cb",
-        "type": "inject",
-        "z": "c8780a2e9f0edd9b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 360,
-        "wires": [
-            [
-                "672a7457613cff8f"
-            ]
-        ]
-    },
-    {
-        "id": "996b770944230348",
-        "type": "debug",
-        "z": "c8780a2e9f0edd9b",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1040,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "672a7457613cff8f",
-        "type": "subflow:79c765de94608626",
-        "z": "c8780a2e9f0edd9b",
-        "name": "",
-        "x": 580,
-        "y": 420,
-        "wires": [
-            [
-                "996b770944230348"
-            ],
-            [
-                "996b770944230348"
-            ]
-        ]
-    },
-    {
         "id": "d37435b305574a3c",
         "type": "subflow:2f7d495596847cc6",
         "z": "839b4ad968606fb0",
@@ -3788,7 +3675,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "3",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -3857,8 +3744,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 920,
-        "y": 740,
+        "x": 940,
+        "y": 1060,
         "wires": []
     },
     {
@@ -3870,7 +3757,6 @@
         "y": 740,
         "wires": [
             [
-                "2e8bb6e9254316be",
                 "d291defeca0ae826"
             ]
         ]
@@ -3884,8 +3770,8 @@
         "links": [
             "4ba3a3022062f30d"
         ],
-        "x": 855,
-        "y": 800,
+        "x": 905,
+        "y": 900,
         "wires": []
     },
     {
@@ -3928,7 +3814,7 @@
         "env": [
             {
                 "name": "FIELDS",
-                "value": "Tension L2-L3",
+                "value": "Tension L3-L1",
                 "type": "str"
             },
             {
@@ -4312,7 +4198,7 @@
         "y": 1040,
         "wires": [
             [
-                "ddaacc6c551b80e7"
+                "922816aec3383140"
             ]
         ]
     },
@@ -4406,6 +4292,46 @@
         "wires": [
             [
                 "ddaacc6c551b80e7"
+            ]
+        ]
+    },
+    {
+        "id": "922816aec3383140",
+        "type": "modbus-flex-getter",
+        "z": "839b4ad968606fb0",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "80444d4b22966a9d",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 560,
+        "y": 1040,
+        "wires": [
+            [],
+            [
+                "c38316c7706a8271"
+            ]
+        ]
+    },
+    {
+        "id": "c38316c7706a8271",
+        "type": "subflow:79c765de94608626",
+        "z": "839b4ad968606fb0",
+        "name": "",
+        "x": 710,
+        "y": 1080,
+        "wires": [
+            [
+                "d291defeca0ae826",
+                "2e8bb6e9254316be"
             ]
         ]
     }
