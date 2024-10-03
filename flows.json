@@ -316,7 +316,8 @@
                 "value": "Tension L1-N",
                 "ui": {
                     "label": {
-                        "en-US": "field"
+                        "en-US": "field",
+                        "es-ES": "Field"
                     },
                     "type": "select",
                     "opts": {
@@ -1350,6 +1351,9 @@
                 "type": "str",
                 "value": "PAC3120",
                 "ui": {
+                    "label": {
+                        "es-ES": "Measurement"
+                    },
                     "type": "input",
                     "opts": {
                         "types": [
@@ -1363,6 +1367,9 @@
                 "type": "str",
                 "value": "",
                 "ui": {
+                    "label": {
+                        "es-ES": "Location"
+                    },
                     "type": "input",
                     "opts": {
                         "types": [
@@ -1376,10 +1383,30 @@
                 "type": "str",
                 "value": "",
                 "ui": {
+                    "label": {
+                        "es-ES": "Operation"
+                    },
                     "type": "input",
                     "opts": {
                         "types": [
                             "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "UNITID",
+                "type": "num",
+                "value": "2",
+                "ui": {
+                    "icon": "font-awesome/fa-id-card-o",
+                    "label": {
+                        "es-ES": "Unit Id"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
                         ]
                     }
                 }
@@ -2779,7 +2806,7 @@
         "type": "function",
         "z": "2f7d495596847cc6",
         "name": "function 2",
-        "func": "const measurement = env.get(\"MEASUREMENT\")\nconst location = env.get(\"LOCATION\")\nconst operation = env.get(\"OPERATION\")\n\nconst payload = msg.payload\nmsg.payload={\n    fc:3,\n    unitid:\"2\",\n    address:payload.Offset,\n    quantity:payload.Cantidad\n}\nmsg.topic={\n    fields:payload.Nombre,\n    unidad:payload.Unidad,\n    measurement:measurement,\n    location:location,\n    operation:operation,\n    timestamp:msg.timestamp,\n    typeField:payload.typeField,\n    formato:payload.Formato\n}\nreturn msg;",
+        "func": "const measurement = env.get(\"MEASUREMENT\")\nconst location = env.get(\"LOCATION\")\nconst operation = env.get(\"OPERATION\")\nconst unitid = env.get(\"UNITID\")\n\nconst payload = msg.payload\nmsg.payload={\n    fc:3,\n    unitid:unitid,\n    address:payload.Offset,\n    quantity:payload.Cantidad\n}\nmsg.topic={\n    fields:payload.Nombre,\n    unidad:payload.Unidad,\n    measurement:measurement,\n    location:location,\n    operation:operation,\n    timestamp:msg.timestamp,\n    typeField:payload.typeField,\n    formato:payload.Formato\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3877,7 +3904,7 @@
         "type": "debug",
         "z": "839b4ad968606fb0",
         "name": "debug 4",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
