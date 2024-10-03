@@ -1418,10 +1418,10 @@
         "in": [
             {
                 "x": 60,
-                "y": 80,
+                "y": 120,
                 "wires": [
                     {
-                        "id": "3991c8c532f9a2fa"
+                        "id": "6e7bced7ece66dc8"
                     }
                 ]
             }
@@ -1433,6 +1433,10 @@
                 "wires": [
                     {
                         "id": "fd1e75ae7f005c1f",
+                        "port": 0
+                    },
+                    {
+                        "id": "aa819b2ac5528b30",
                         "port": 0
                     }
                 ]
@@ -2775,7 +2779,7 @@
         "type": "function",
         "z": "2f7d495596847cc6",
         "name": "function 2",
-        "func": "const measurement = env.get(\"MEASUREMENT\")\nconst location = env.get(\"LOCATION\")\nconst operation = env.get(\"OPERATION\")\n\nconst payload = msg.payload\nmsg.payload={\n    fc:3,\n    unitid:\"2\",\n    address:payload.Offset,\n    quantity:payload.Cantidad\n}\nmsg.topic={\n    fields:payload.Nombre,\n    unidad:payload.Unidad,\n    measurement:measurement,\n    location:location,\n    operation:operation,\n    timestamp:msg.timestamp,\n    typeField:payload.typeField\n}\nreturn msg;",
+        "func": "const measurement = env.get(\"MEASUREMENT\")\nconst location = env.get(\"LOCATION\")\nconst operation = env.get(\"OPERATION\")\n\nconst payload = msg.payload\nmsg.payload={\n    fc:3,\n    unitid:\"2\",\n    address:payload.Offset,\n    quantity:payload.Cantidad\n}\nmsg.topic={\n    fields:payload.Nombre,\n    unidad:payload.Unidad,\n    measurement:measurement,\n    location:location,\n    operation:operation,\n    timestamp:msg.timestamp,\n    typeField:payload.typeField,\n    formato:payload.Formato\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2987,6 +2991,143 @@
         "y": 340,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "267455ca49a28c1f",
+        "type": "buffer-parser",
+        "z": "b653d8ea62c0e0fd",
+        "name": "",
+        "data": "payload.buffer",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "doublebe",
+                "name": "item",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "c1bf325e4c6962f0"
+            ]
+        ]
+    },
+    {
+        "id": "c1bf325e4c6962f0",
+        "type": "switch",
+        "z": "b653d8ea62c0e0fd",
+        "name": "chkErrorMessage",
+        "property": "error.message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "68de3cee39e7901e"
+            ]
+        ],
+        "icon": "font-awesome/fa-stop-circle"
+    },
+    {
+        "id": "aa819b2ac5528b30",
+        "type": "function",
+        "z": "b653d8ea62c0e0fd",
+        "name": "Form Data",
+        "func": "const topic = msg.topic;  \nconst payload = msg.payload;  \nmsg.payload = [  \n    {  \n        measurement: topic.measurement,  \n        fields: {[topic.fields]: payload.item},\n        tags: {  \n            location: topic.location,  \n            operation: topic.operation,  \n            typeField: topic.typeField  \n        },  \n        timestamp: new Date(topic.timestamp)  \n    }  \n];  \nreturn msg;  ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68de3cee39e7901e",
+        "type": "function",
+        "z": "b653d8ea62c0e0fd",
+        "name": "dot",
+        "func": "const topic = msg.topic\nnode.status({ fill: \"green\", shape: \"dot\", text: topic.fields });\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "aa819b2ac5528b30"
+            ]
+        ]
+    },
+    {
+        "id": "6e7bced7ece66dc8",
+        "type": "switch",
+        "z": "b653d8ea62c0e0fd",
+        "name": "",
+        "property": "topic.formato",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Float",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Double",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "3991c8c532f9a2fa"
+            ],
+            [
+                "267455ca49a28c1f"
+            ]
         ]
     },
     {
@@ -3744,8 +3885,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 1060,
+        "x": 1020,
+        "y": 900,
         "wires": []
     },
     {
@@ -3757,7 +3898,8 @@
         "y": 740,
         "wires": [
             [
-                "d291defeca0ae826"
+                "d291defeca0ae826",
+                "2e8bb6e9254316be"
             ]
         ]
     },
@@ -4317,21 +4459,38 @@
         "wires": [
             [],
             [
-                "c38316c7706a8271"
+                "f2f3c94c50cb6e72"
             ]
         ]
     },
     {
-        "id": "c38316c7706a8271",
-        "type": "subflow:79c765de94608626",
+        "id": "067c9b1b7d33c84c",
+        "type": "debug",
+        "z": "839b4ad968606fb0",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "f2f3c94c50cb6e72",
+        "type": "subflow:b653d8ea62c0e0fd",
         "z": "839b4ad968606fb0",
         "name": "",
-        "x": 710,
+        "x": 720,
         "y": 1080,
         "wires": [
             [
                 "d291defeca0ae826",
-                "2e8bb6e9254316be"
+                "067c9b1b7d33c84c"
             ]
         ]
     }
